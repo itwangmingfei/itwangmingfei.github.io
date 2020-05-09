@@ -17,14 +17,16 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>PHP | SeeFly的个人博客</title>
-  <meta property="og:type" content="article">
-<meta property="og:title" content="PHP">
+  <title>PHP for Mac +nginx | SeeFly的个人博客</title>
+  <meta name="description" content="查看php文件路径1locate php-fpm &#x2F;private&#x2F;etc&#x2F;php-fpm.conf.default&#x2F;private&#x2F;etc&#x2F;php-fpm.d&#x2F;www.conf.default 12345sudo cp &#x2F;private&#x2F;etc&#x2F;php-fpm.conf.default &#x2F;private&#x2F;etc&#x2F;php-fpm.conf&#x2F;&#x2F; 打开 复制的文件打开并修改路径 error_log &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP for Mac +nginx">
 <meta property="og:url" content="https://itwangmingfei.github.io/2020/05/09/PHP%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="SeeFly的博客">
+<meta property="og:description" content="查看php文件路径1locate php-fpm &#x2F;private&#x2F;etc&#x2F;php-fpm.conf.default&#x2F;private&#x2F;etc&#x2F;php-fpm.d&#x2F;www.conf.default 12345sudo cp &#x2F;private&#x2F;etc&#x2F;php-fpm.conf.default &#x2F;private&#x2F;etc&#x2F;php-fpm.conf&#x2F;&#x2F; 打开 复制的文件打开并修改路径 error_log &#x3D;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-09T13:35:00.000Z">
-<meta property="article:modified_time" content="2020-05-09T13:44:45.586Z">
+<meta property="article:modified_time" content="2020-05-09T14:54:29.061Z">
 <meta property="article:author" content="SeeFly">
 <meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary">
@@ -325,7 +327,7 @@
                 <a class="category-link" href="/categories/php/">php</a>
               </p>
               <p class="item-title">
-                <a href="/2020/05/09/PHP%E9%9D%A2%E8%AF%95%E9%A2%98/" class="title">PHP</a>
+                <a href="/2020/05/09/PHP%E9%9D%A2%E8%AF%95%E9%A2%98/" class="title">PHP for Mac +nginx</a>
               </p>
               <p class="item-date">
                 <time datetime="2020-05-09T13:35:00.000Z" itemprop="datePublished">2020-05-09</time>
@@ -353,7 +355,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      PHP
+      PHP for Mac +nginx
     </h1>
   
 
@@ -386,7 +388,15 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        
+        <h3 id="查看php文件路径"><a href="#查看php文件路径" class="headerlink" title="查看php文件路径"></a>查看php文件路径</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate php-fpm</span><br></pre></td></tr></table></figure>
+<p>/private/etc/php-fpm.conf.default<br>/private/etc/php-fpm.d/<a href="http://www.conf.default" target="_blank" rel="noopener">www.conf.default</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /private/etc/php-fpm.conf.default /private/etc/php-fpm.conf</span><br><span class="line">// 打开 复制的文件打开并修改路径 error_log = /usr/<span class="built_in">local</span>/var/<span class="built_in">log</span>/php-fpm.log</span><br><span class="line">sudo cp /private/etc/php-fpm.d/www.conf.default /private/etc/php-fpm.d/www.conf</span><br><span class="line">sudu killall php-fpm //清除</span><br><span class="line">sudo php-fpm -D //重启</span><br></pre></td></tr></table></figure>
+<h3 id="关联nginx"><a href="#关联nginx" class="headerlink" title="关联nginx"></a>关联nginx</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/<span class="built_in">local</span>/etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">===============================直接覆盖</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  256;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    log_format  main  <span class="string">'$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">                      <span class="string">'$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line">                      <span class="string">'"$http_user_agent" "$http_x_forwarded_for"'</span>;</span><br><span class="line"></span><br><span class="line">    access_log  /usr/<span class="built_in">local</span>/var/<span class="built_in">log</span>/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    port_in_redirect off;</span><br><span class="line"></span><br><span class="line">    include /usr/<span class="built_in">local</span>/etc/nginx/conf.d/*.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="创建-conf-d"><a href="#创建-conf-d" class="headerlink" title="创建 conf.d"></a>创建 conf.d</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/etc/nginx/</span><br><span class="line">mkdir conf.d</span><br></pre></td></tr></table></figure>
+<h3 id="创建文件-php-fpm"><a href="#创建文件-php-fpm" class="headerlink" title="创建文件 php-fpm"></a>创建文件 php-fpm</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> conf.d</span><br><span class="line">vim php-fpm</span><br><span class="line"></span><br><span class="line">======================</span><br><span class="line"><span class="comment">#proxy the php scripts to php-fpm</span></span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">    try_files                   <span class="variable">$uri</span> = 404;</span><br><span class="line">    fastcgi_pass                127.0.0.1:9000;</span><br><span class="line">    fastcgi_index               index.php;</span><br><span class="line">    fastcgi_intercept_errors    on;</span><br><span class="line">    include /usr/<span class="built_in">local</span>/etc/nginx/fastcgi.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建文件-default-conf"><a href="#创建文件-default-conf" class="headerlink" title="创建文件 default.conf"></a>创建文件 default.conf</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">vim default.conf</span><br><span class="line"></span><br><span class="line">====================</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line">    root         项目路径;</span><br><span class="line"></span><br><span class="line">    access_log  /usr/<span class="built_in">local</span>/var/<span class="built_in">log</span>/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        index  index.html index.htm index.php;</span><br><span class="line">        autoindex   on;</span><br><span class="line">        include     /usr/<span class="built_in">local</span>/etc/nginx/conf.d/php-fpm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location = /info &#123;</span><br><span class="line">        allow   127.0.0.1;</span><br><span class="line">        deny    all;</span><br><span class="line">        rewrite (.*) /.info.php;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page  404     /404.html;</span><br><span class="line">    error_page  403     /403.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <div class="article-footer">
@@ -395,7 +405,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://itwangmingfei.github.io/2020/05/09/PHP%E9%9D%A2%E8%AF%95%E9%A2%98/" title="PHP" target="_blank" rel="external">https://itwangmingfei.github.io/2020/05/09/PHP%E9%9D%A2%E8%AF%95%E9%A2%98/</a>
+      <a href="https://itwangmingfei.github.io/2020/05/09/PHP%E9%9D%A2%E8%AF%95%E9%A2%98/" title="PHP for Mac +nginx" target="_blank" rel="external">https://itwangmingfei.github.io/2020/05/09/PHP%E9%9D%A2%E8%AF%95%E9%A2%98/</a>
     </li>
     
     <li class="post-copyright-license">
