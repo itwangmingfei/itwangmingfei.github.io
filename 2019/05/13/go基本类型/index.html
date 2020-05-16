@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>GO环境安装 | SeeFly的个人博客</title>
-  <meta name="description" content="Go程序下载https:&#x2F;&#x2F;golang.google.cn&#x2F;dl&#x2F; 1tar -C &#x2F;usr&#x2F;local -xzf go1.4.linux-amd64.tar.gz 环境变量export PATH&#x3D;$PATH:&#x2F;usr&#x2F;local&#x2F;go&#x2F;bin配置 GO_ROOT GO_PATH12export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;goexport GOPATH&#x3D;&#x2F;Users&#x2F;yourname&#x2F;">
+  <title>go基本三大类型 | SeeFly的个人博客</title>
+  <meta name="description" content="go中值类型、引用类型、指针类型go语言中的值类型：123int、float、bool、array、sturct等　　值传递是指在调用函数时将实际参数复制一份传递到函数中，这样在函数中如果对参数进行修改，将不会影响到实际参数　　声明一个值类型变量时，编译器会在栈中分配一个空间，空间里存储的就是该变量的值 go语言中的引用类型：1234slice，map，channel，interface，func">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GO环境安装">
-<meta property="og:url" content="https://itwangmingfei.github.io/2020/05/09/GO/index.html">
+<meta property="og:title" content="go基本三大类型">
+<meta property="og:url" content="https://itwangmingfei.github.io/2019/05/13/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="SeeFly的博客">
-<meta property="og:description" content="Go程序下载https:&#x2F;&#x2F;golang.google.cn&#x2F;dl&#x2F; 1tar -C &#x2F;usr&#x2F;local -xzf go1.4.linux-amd64.tar.gz 环境变量export PATH&#x3D;$PATH:&#x2F;usr&#x2F;local&#x2F;go&#x2F;bin配置 GO_ROOT GO_PATH12export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;goexport GOPATH&#x3D;&#x2F;Users&#x2F;yourname&#x2F;">
+<meta property="og:description" content="go中值类型、引用类型、指针类型go语言中的值类型：123int、float、bool、array、sturct等　　值传递是指在调用函数时将实际参数复制一份传递到函数中，这样在函数中如果对参数进行修改，将不会影响到实际参数　　声明一个值类型变量时，编译器会在栈中分配一个空间，空间里存储的就是该变量的值 go语言中的引用类型：1234slice，map，channel，interface，func">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-05-09T13:42:00.000Z">
-<meta property="article:modified_time" content="2020-05-12T12:07:44.210Z">
+<meta property="article:published_time" content="2019-05-13T13:03:00.000Z">
+<meta property="article:modified_time" content="2020-05-16T13:09:39.125Z">
 <meta property="article:author" content="SeeFly">
-<meta property="article:tag" content="go">
+<meta property="article:tag" content="go基本类型">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://itwangmingfei.github.io/2020/05/09/GO/index.html">
+  <link rel="canonical" href="https://itwangmingfei.github.io/2019/05/13/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/index.html">
   
     <link rel="alternate" href="/atom.xml" title="SeeFly的博客" type="application/atom+xml">
   
@@ -211,7 +211,7 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/php/laravel/">laravel</a><span class="category-list-count">3</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/php/laravel/">laravel</a><span class="category-list-count">3</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -221,7 +221,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Validate/" rel="tag">Validate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bcrypt/" rel="tag">bcrypt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/channel/" rel="tag">channel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gin/" rel="tag">gin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gorm/" rel="tag">gorm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jwt-go/" rel="tag">jwt-go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E5%8C%BA%E5%88%AB/" rel="tag">mysql存储引擎区别</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php%E6%96%B9%E6%B3%95/" rel="tag">php方法</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Validate/" rel="tag">Validate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bcrypt/" rel="tag">bcrypt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/channel/" rel="tag">channel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gin/" rel="tag">gin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gorm/" rel="tag">gorm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" rel="tag">go基本类型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jwt-go/" rel="tag">jwt-go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E5%8C%BA%E5%88%AB/" rel="tag">mysql存储引擎区别</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php%E6%96%B9%E6%B3%95/" rel="tag">php方法</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -231,7 +231,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/Validate/" style="font-size: 13px;">Validate</a> <a href="/tags/bcrypt/" style="font-size: 13px;">bcrypt</a> <a href="/tags/channel/" style="font-size: 13px;">channel</a> <a href="/tags/gin/" style="font-size: 13.5px;">gin</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/go/" style="font-size: 13px;">go</a> <a href="/tags/gorm/" style="font-size: 13px;">gorm</a> <a href="/tags/js/" style="font-size: 13px;">js</a> <a href="/tags/jwt-go/" style="font-size: 13px;">jwt-go</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E5%8C%BA%E5%88%AB/" style="font-size: 13px;">mysql存储引擎区别</a> <a href="/tags/nginx/" style="font-size: 13px;">nginx</a> <a href="/tags/php/" style="font-size: 13.5px;">php</a> <a href="/tags/php%E6%96%B9%E6%B3%95/" style="font-size: 13px;">php方法</a>
+      <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/Validate/" style="font-size: 13px;">Validate</a> <a href="/tags/bcrypt/" style="font-size: 13px;">bcrypt</a> <a href="/tags/channel/" style="font-size: 13px;">channel</a> <a href="/tags/gin/" style="font-size: 13.5px;">gin</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/go/" style="font-size: 13px;">go</a> <a href="/tags/gorm/" style="font-size: 13px;">gorm</a> <a href="/tags/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" style="font-size: 13px;">go基本类型</a> <a href="/tags/js/" style="font-size: 13px;">js</a> <a href="/tags/jwt-go/" style="font-size: 13px;">jwt-go</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E5%8C%BA%E5%88%AB/" style="font-size: 13px;">mysql存储引擎区别</a> <a href="/tags/nginx/" style="font-size: 13px;">nginx</a> <a href="/tags/php/" style="font-size: 13.5px;">php</a> <a href="/tags/php%E6%96%B9%E6%B3%95/" style="font-size: 13px;">php方法</a>
     </div>
   </div>
 
@@ -240,7 +240,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -252,6 +252,21 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/15/Gocolly%E7%88%AC%E8%99%AB/" class="title">Gocolly爬虫</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-15T13:56:51.000Z" itemprop="datePublished">2020-05-15</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -312,21 +327,6 @@
             </div>
           </li>
           
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/go/">go</a>
-              </p>
-              <p class="item-title">
-                <a href="/2020/05/14/Gin-validate/" class="title">Gin-validate</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2020-05-14T12:22:00.000Z" itemprop="datePublished">2020-05-14</time>
-              </p>
-            </div>
-          </li>
-          
       </ul>
     </div>
   </div>
@@ -340,14 +340,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-GO" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-go基本类型" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      GO环境安装
+      go基本三大类型
     </h1>
   
 
@@ -355,8 +355,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/05/09/GO/" class="article-date">
-	  <time datetime="2020-05-09T13:42:00.000Z" itemprop="datePublished">2020-05-09</time>
+	<a href="/2019/05/13/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" class="article-date">
+	  <time datetime="2019-05-13T13:03:00.000Z" itemprop="datePublished">2019-05-13</time>
 	</a>
 </span>
         
@@ -368,22 +368,21 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/go/" rel="tag">go</a>
+	<a class="article-tag-link" href="/tags/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" rel="tag">go基本类型</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/05/09/GO/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/05/13/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h4 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h4><h6 id="程序下载"><a href="#程序下载" class="headerlink" title="程序下载"></a>程序下载</h6><p><a href="https://golang.google.cn/dl/" target="_blank" rel="noopener">https://golang.google.cn/dl/</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -C /usr/<span class="built_in">local</span> -xzf go1.4.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
-<h5 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h5><pre><code>export PATH=$PATH:/usr/local/go/bin</code></pre><h5 id="配置-GO-ROOT-GO-PATH"><a href="#配置-GO-ROOT-GO-PATH" class="headerlink" title="配置 GO_ROOT GO_PATH"></a>配置 GO_ROOT GO_PATH</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GOROOT=/usr/<span class="built_in">local</span>/go</span><br><span class="line"><span class="built_in">export</span> GOPATH=/Users/yourname/go</span><br></pre></td></tr></table></figure>
-<h4 id="Users-yourname-go"><a href="#Users-yourname-go" class="headerlink" title="/Users/yourname/go"></a>/Users/yourname/go</h4><h4 id="创建三个文件夹"><a href="#创建三个文件夹" class="headerlink" title="创建三个文件夹"></a>创建三个文件夹</h4><pre><code>bin pkg src</code></pre>
+        <h4 id="go中值类型、引用类型、指针类型"><a href="#go中值类型、引用类型、指针类型" class="headerlink" title="go中值类型、引用类型、指针类型"></a>go中值类型、引用类型、指针类型</h4><h5 id="go语言中的值类型："><a href="#go语言中的值类型：" class="headerlink" title="go语言中的值类型："></a>go语言中的值类型：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int、float、bool、array、sturct等</span><br><span class="line">　　值传递是指在调用函数时将实际参数复制一份传递到函数中，这样在函数中如果对参数进行修改，将不会影响到实际参数</span><br><span class="line">　　声明一个值类型变量时，编译器会在栈中分配一个空间，空间里存储的就是该变量的值</span><br></pre></td></tr></table></figure>
+<h5 id="go语言中的引用类型："><a href="#go语言中的引用类型：" class="headerlink" title="go语言中的引用类型："></a>go语言中的引用类型：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">slice，map，channel，interface，func，string等</span><br><span class="line">　声明一个引用类型的变量，编译器会把实例的内存分配在堆上</span><br><span class="line">string和其他语言一样，是引用类型，string的底层实现struct String &#123; byte* str; intgo len; &#125;; 但是因为string不允许修改，每次操作string只能生成新的对象，所以在看起来使用时像值类型。</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<h5 id="go语言中的指针类型："><a href="#go语言中的指针类型：" class="headerlink" title="go语言中的指针类型："></a>go语言中的指针类型：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一个指针变量指向了一个值的内存地址</span><br><span class="line"> 　  当一个指针被定义后没有分配到任何变量时，它的值为 nil。nil 指针也称为空指针</span><br><span class="line">　　一个指针变量通常缩写为 ptr</span><br><span class="line">　　其实引用类型可以看作对指针的封装</span><br></pre></td></tr></table></figure>
       
     </div>
     <div class="article-footer">
@@ -392,7 +391,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://itwangmingfei.github.io/2020/05/09/GO/" title="GO环境安装" target="_blank" rel="external">https://itwangmingfei.github.io/2020/05/09/GO/</a>
+      <a href="https://itwangmingfei.github.io/2019/05/13/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" title="go基本三大类型" target="_blank" rel="external">https://itwangmingfei.github.io/2019/05/13/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -439,12 +438,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2020/05/09/Git/" title="Git 基础命令"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2019/05/29/php%E6%96%B9%E6%B3%95/" title="php-method"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2020/05/09/Nginx/" title="Nginx for Mac"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/05/12/Laravel-%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" title="Laravel 增删改查"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

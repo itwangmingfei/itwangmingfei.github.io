@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Gocolly爬虫 | SeeFly的个人博客</title>
+  <meta name="description" content="gocolly 爬虫1go get -u github.com&#x2F;gocolly&#x2F;colly&#x2F;v2&#x2F;...  colly框架依赖goquery库，goquery将jQuery的语法和特性引入到了go语言中。如果要灵活自如地采集数据，首先要了解jQuery选择器参考别人整理的信息比较全https:&#x2F;&#x2F;www.cnblogs.com&#x2F;majianguo&#x2F;p&#x2F;8146130.html 官方例子123456">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gocolly爬虫">
+<meta property="og:url" content="https://itwangmingfei.github.io/2020/05/15/Gocolly%E7%88%AC%E8%99%AB/index.html">
+<meta property="og:site_name" content="SeeFly的博客">
+<meta property="og:description" content="gocolly 爬虫1go get -u github.com&#x2F;gocolly&#x2F;colly&#x2F;v2&#x2F;...  colly框架依赖goquery库，goquery将jQuery的语法和特性引入到了go语言中。如果要灵活自如地采集数据，首先要了解jQuery选择器参考别人整理的信息比较全https:&#x2F;&#x2F;www.cnblogs.com&#x2F;majianguo&#x2F;p&#x2F;8146130.html 官方例子123456">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-15T13:56:51.000Z">
+<meta property="article:modified_time" content="2020-05-15T14:13:20.968Z">
+<meta property="article:author" content="SeeFly">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://itwangmingfei.github.io/2020/05/15/Gocolly%E7%88%AC%E8%99%AB/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="SeeFly的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/itwangmingfei" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Wang Mingfei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Do it if you want</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> shandong, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/itwangmingfei" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/php/laravel/">laravel</a><span class="category-list-count">3</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Validate/" rel="tag">Validate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bcrypt/" rel="tag">bcrypt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/channel/" rel="tag">channel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gin/" rel="tag">gin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gorm/" rel="tag">gorm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" rel="tag">go基本类型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jwt-go/" rel="tag">jwt-go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E5%8C%BA%E5%88%AB/" rel="tag">mysql存储引擎区别</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php%E6%96%B9%E6%B3%95/" rel="tag">php方法</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/Validate/" style="font-size: 13px;">Validate</a> <a href="/tags/bcrypt/" style="font-size: 13px;">bcrypt</a> <a href="/tags/channel/" style="font-size: 13px;">channel</a> <a href="/tags/gin/" style="font-size: 13.5px;">gin</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/go/" style="font-size: 13px;">go</a> <a href="/tags/gorm/" style="font-size: 13px;">gorm</a> <a href="/tags/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" style="font-size: 13px;">go基本类型</a> <a href="/tags/js/" style="font-size: 13px;">js</a> <a href="/tags/jwt-go/" style="font-size: 13px;">jwt-go</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E5%8C%BA%E5%88%AB/" style="font-size: 13px;">mysql存储引擎区别</a> <a href="/tags/nginx/" style="font-size: 13px;">nginx</a> <a href="/tags/php/" style="font-size: 13.5px;">php</a> <a href="/tags/php%E6%96%B9%E6%B3%95/" style="font-size: 13px;">php方法</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/15/Gocolly%E7%88%AC%E8%99%AB/" class="title">Gocolly爬虫</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-15T13:56:51.000Z" itemprop="datePublished">2020-05-15</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/go/">go</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/14/Jwt-go/" class="title">Jwt-go创建Token验证Token</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-14T12:55:00.000Z" itemprop="datePublished">2020-05-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/go/">go</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/14/Gin-gorm-validate/" class="title">Gin-gorm-validate</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-14T12:45:00.000Z" itemprop="datePublished">2020-05-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/go/">go</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/14/Gin-controller/" class="title">Gin-controller</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-14T12:39:00.000Z" itemprop="datePublished">2020-05-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/go/">go</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/14/Gin-gorm/" class="title">Gin-gorm</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-14T12:25:00.000Z" itemprop="datePublished">2020-05-14</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Gocolly爬虫" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Gocolly爬虫
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/05/15/Gocolly%E7%88%AC%E8%99%AB/" class="article-date">
+	  <time datetime="2020-05-15T13:56:51.000Z" itemprop="datePublished">2020-05-15</time>
+	</a>
+</span>
+        
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/05/15/Gocolly%E7%88%AC%E8%99%AB/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h4 id="gocolly-爬虫"><a href="#gocolly-爬虫" class="headerlink" title="gocolly 爬虫"></a>gocolly 爬虫</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get -u github.com/gocolly/colly/v2/...</span><br></pre></td></tr></table></figure>
+
+<h5 id="colly框架依赖goquery库，goquery将jQuery的语法和特性引入到了go语言中。如果要灵活自如地采集数据，首先要了解jQuery选择器"><a href="#colly框架依赖goquery库，goquery将jQuery的语法和特性引入到了go语言中。如果要灵活自如地采集数据，首先要了解jQuery选择器" class="headerlink" title="colly框架依赖goquery库，goquery将jQuery的语法和特性引入到了go语言中。如果要灵活自如地采集数据，首先要了解jQuery选择器"></a>colly框架依赖goquery库，goquery将jQuery的语法和特性引入到了go语言中。如果要灵活自如地采集数据，首先要了解jQuery选择器</h5><h5 id="参考别人整理的信息比较全"><a href="#参考别人整理的信息比较全" class="headerlink" title="参考别人整理的信息比较全"></a>参考别人整理的信息比较全</h5><p><a href="https://www.cnblogs.com/majianguo/p/8146130.html" target="_blank" rel="noopener">https://www.cnblogs.com/majianguo/p/8146130.html</a></p>
+<h4 id="官方例子"><a href="#官方例子" class="headerlink" title="官方例子"></a>官方例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	c := colly.NewCollector()</span><br><span class="line"></span><br><span class="line">	// Find and visit all links</span><br><span class="line">	c.OnHTML(<span class="string">"a[href]"</span>, func(e *colly.HTMLElement) &#123;</span><br><span class="line">		e.Request.Visit(e.Attr(<span class="string">"href"</span>))</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	c.OnRequest(func(r *colly.Request) &#123;</span><br><span class="line">		fmt.Println(<span class="string">"Visiting"</span>, r.URL)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	c.Visit(<span class="string">"http://go-colly.org/"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="写个Demo，采集七猫小说，查找页面书库的链接，只要获取到存入redis，验证redis是否存储过url，然后无限循环获取书库链接里面的标题等数据。。。"><a href="#写个Demo，采集七猫小说，查找页面书库的链接，只要获取到存入redis，验证redis是否存储过url，然后无限循环获取书库链接里面的标题等数据。。。" class="headerlink" title="写个Demo，采集七猫小说，查找页面书库的链接，只要获取到存入redis，验证redis是否存储过url，然后无限循环获取书库链接里面的标题等数据。。。"></a>写个Demo，采集七猫小说，查找页面书库的链接，只要获取到存入redis，验证redis是否存储过url，然后无限循环获取书库链接里面的标题等数据。。。</h4><h5 id="控制器-https-github-com-itwangmingfei-Gin-go-demo-blob-master-controllers-gocoll-go"><a href="#控制器-https-github-com-itwangmingfei-Gin-go-demo-blob-master-controllers-gocoll-go" class="headerlink" title="控制器 https://github.com/itwangmingfei/Gin-go-demo/blob/master/controllers/gocoll.go"></a>控制器 <a href="https://github.com/itwangmingfei/Gin-go-demo/blob/master/controllers/gocoll.go" target="_blank" rel="noopener">https://github.com/itwangmingfei/Gin-go-demo/blob/master/controllers/gocoll.go</a></h5><h5 id="Redis-https-github-com-itwangmingfei-Gin-go-demo-blob-master-tools-redis-go"><a href="#Redis-https-github-com-itwangmingfei-Gin-go-demo-blob-master-tools-redis-go" class="headerlink" title="Redis https://github.com/itwangmingfei/Gin-go-demo/blob/master/tools/redis.go"></a>Redis <a href="https://github.com/itwangmingfei/Gin-go-demo/blob/master/tools/redis.go" target="_blank" rel="noopener">https://github.com/itwangmingfei/Gin-go-demo/blob/master/tools/redis.go</a></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">@爬取七猫小说网</span><br><span class="line">*/</span><br><span class="line">func (g Gocoll) get(c *gin.Context)&#123;</span><br><span class="line">	dlink :=<span class="string">"https://www.qimao.com"</span></span><br><span class="line">	cfg := config.GetConfig()</span><br><span class="line">	var novel models.Novel</span><br><span class="line">	var clientredis tools.GoRedis</span><br><span class="line">	//*********************************</span><br><span class="line"></span><br><span class="line">	coll := colly.NewCollector(</span><br><span class="line">		colly.AllowedDomains(<span class="string">"www.qimao.com"</span>),</span><br><span class="line">		colly.Async(<span class="literal">true</span>),</span><br><span class="line">		colly.UserAgent(<span class="string">"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"</span>),</span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	///这个地方是配置redis存储请求返回的数据信息吧？</span><br><span class="line"></span><br><span class="line">	storage := &amp;redisstorage.Storage&#123;</span><br><span class="line">		Address: fmt.Sprintf(<span class="string">"%s:%s"</span>, cfg.Redis.Host,cfg.Redis.Port),</span><br><span class="line">		Password:cfg.Redis.Passwd,</span><br><span class="line">		DB: cfg.Redis.Db,</span><br><span class="line">		Prefix : <span class="string">"HTTP_QIMAO"</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> err := coll.SetStorage(storage);err!=nil&#123;</span><br><span class="line">		panic(err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> err:=storage.Clear();err!=nil&#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line">	//defer storage.Client.Close()</span><br><span class="line">	//*----------------------------------------------</span><br><span class="line"></span><br><span class="line">	q,_ :=queue.New(2,storage)</span><br><span class="line">	/*&lt;h2 class=<span class="string">"tit"</span>&gt;????&lt;/h2&gt;*/</span><br><span class="line">	/*获取样式 div.data-txt 模块下的数据信息*/</span><br><span class="line">	coll.OnHTML(`div.data-txt`, func(e *colly.HTMLElement) &#123;</span><br><span class="line">		ls,_ := e.DOM.Html()</span><br><span class="line"></span><br><span class="line">		//标题</span><br><span class="line">		tit := e.ChildText(<span class="string">"h2.tit"</span>)</span><br><span class="line">		//作者</span><br><span class="line">		pname := e.ChildText(`p.p-name a`)</span><br><span class="line">		//状态</span><br><span class="line">		status := e.ChildText(`span.qm-tags.black.clearfix em:first-child`)</span><br><span class="line"></span><br><span class="line">		nums := e.ChildText(`p.p-num span:nth-child(1)`)</span><br><span class="line">		nums1 := e.ChildText(`p.p-num span:nth-child(3)`)</span><br><span class="line">		nums2 := e.ChildText(`p.p-num span:nth-child(5)`)</span><br><span class="line"></span><br><span class="line">		//没有标签正则一下</span><br><span class="line">		reg := regexp.MustCompile(`&lt;em&gt;主角：&lt;/em&gt;(.*?)&lt;`)</span><br><span class="line">		regstr := reg.FindAllStringSubmatch(ls,-1)</span><br><span class="line"></span><br><span class="line">		uptime := e.ChildText(`p.p-update em.time`)</span><br><span class="line"></span><br><span class="line">		newpage :=e.ChildText(`p.p-update a`)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> len(tit)&gt;0 &#123;</span><br><span class="line">			novel.Title = tit</span><br><span class="line">			fmt.Printf(<span class="string">"名称：%s \n"</span>,tit)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> len(regstr) &gt;0 &#123;</span><br><span class="line">			novel.Mster = regstr[0][1]</span><br><span class="line">			fmt.Printf(<span class="string">"主角：%s \n"</span>,regstr[0][1])</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> len(pname) &gt;0 &#123;</span><br><span class="line">			fmt.Printf(<span class="string">"作者：%s \n"</span>,pname)</span><br><span class="line">			novel.Author = pname</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> len(status) &gt;0 &#123;</span><br><span class="line">			fmt.Printf(<span class="string">"状态：%s \n"</span>,status)</span><br><span class="line">			novel.Status = status</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> len(nums)&gt;0&#123;</span><br><span class="line">			fmt.Printf(<span class="string">"数量：%s %s %s \n"</span>,nums,nums1,nums2)</span><br><span class="line">			novel.Show = nums+nums1+nums2</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> len(uptime)&gt;0&#123;</span><br><span class="line">			fmt.Printf(<span class="string">"更新时间：%s \n"</span>,uptime)</span><br><span class="line">			novel.Uptime =uptime</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> len(newpage)&gt;0&#123;</span><br><span class="line">			fmt.Printf(<span class="string">"最新章节：%s \n"</span>,newpage)</span><br><span class="line">			novel.Newpage = newpage</span><br><span class="line">		&#125;</span><br><span class="line">		models.GetDb().Create(&amp;novel)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	//获取url</span><br><span class="line">	coll.OnHTML(`a[href]`,func(e *colly.HTMLElement)&#123;</span><br><span class="line">		link := e.Attr(<span class="string">"href"</span>)</span><br><span class="line">		//正则匹配书库</span><br><span class="line">		reg := regexp.MustCompile(`^(/shuku/[1-9]&#123;6&#125;/)`)</span><br><span class="line">		res := reg.FindAllString(link,-1)</span><br><span class="line">		//存在返回数据</span><br><span class="line">		<span class="keyword">if</span> len(res)&gt;0&#123;</span><br><span class="line">			//存入redis中</span><br><span class="line">			newLink :=  dlink +link</span><br><span class="line">			//判断执行存储的redis中是否存在如果存在不存储当前url</span><br><span class="line">			Isset := clientredis.ToIsset(newLink)</span><br><span class="line"></span><br><span class="line">			//如果不存在继续抓取当前链接</span><br><span class="line">			<span class="keyword">if</span> !Isset&#123;</span><br><span class="line">				//连接存入redis中</span><br><span class="line">				log.Println(newLink)</span><br><span class="line">				err := clientredis.DoLpush(newLink)</span><br><span class="line">				<span class="keyword">if</span> err!=nil&#123;</span><br><span class="line">					log.Println(err)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	coll.OnRequest(func(r *colly.Request) &#123;</span><br><span class="line">		fmt.Println(<span class="string">"Visiting"</span>, r.URL.String())</span><br><span class="line">	&#125;)</span><br><span class="line">	coll.OnScraped(func(r *colly.Response) &#123;</span><br><span class="line">		fmt.Println(<span class="string">"Finished"</span>, r.Request.URL)</span><br><span class="line">	&#125;)</span><br><span class="line">	//获取这个应该是配饰redisstorage使用 用于接收返回数据然后存储</span><br><span class="line">	coll.OnResponse(func(r *colly.Response) &#123;</span><br><span class="line">		log.Println(coll.Cookies(r.Request.URL.String()))</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	novel.Url = dlink</span><br><span class="line">	q.AddURL(dlink)</span><br><span class="line">	q.Run(coll)</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">    	/*</span><br><span class="line">        @获取新的链接</span><br><span class="line">        */</span><br><span class="line">		dlink,_ := clientredis.DoRpop()</span><br><span class="line">		<span class="keyword">if</span> len(dlink)!=0&#123;</span><br><span class="line">			novel.Url = dlink</span><br><span class="line">			q.AddURL(dlink)</span><br><span class="line">			q.Run(coll)</span><br><span class="line">			time.Sleep(time.Second*2)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Redis-定义"><a href="#Redis-定义" class="headerlink" title="Redis 定义"></a>Redis 定义</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">package tools</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"gin/config"</span></span><br><span class="line">	<span class="string">"github.com/monnand/goredis"</span></span><br><span class="line">	<span class="built_in">log</span> <span class="string">"github.com/sirupsen/logrus"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> GoRedis struct &#123;</span><br><span class="line">	*goredis.Client</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var Client GoRedis</span><br><span class="line"></span><br><span class="line">const (</span><br><span class="line">	DO_QUEUE = <span class="string">"DoQueue"</span> //记录需要执行的数据</span><br><span class="line">	TO_QUEUE = <span class="string">"Toqueue"</span> //处理过的数据放这里</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//链接redis</span><br><span class="line">func InitRedis(cfg config.Redis) &#123;</span><br><span class="line">	var cliect  goredis.Client</span><br><span class="line">	cliect.Addr = fmt.Sprintf(<span class="string">"%s:%s"</span>, cfg.Host, cfg.Port)</span><br><span class="line">	cliect.Password = cfg.Passwd</span><br><span class="line">	cliect.Db = cfg.Db</span><br><span class="line">	pong, err := cliect.Ping()</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Fatalf(<span class="string">"cant ping redis %s\n"</span>, err.Error())</span><br><span class="line">	&#125;</span><br><span class="line">	Client = GoRedis&#123;&amp;cliect&#125;</span><br><span class="line">	log.Println(<span class="string">"ping redis:"</span>, pong)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//存入数据头部存入数据</span><br><span class="line">func (r GoRedis) DoLpush(value string) error &#123;</span><br><span class="line">	err := Client.Lpush(DO_QUEUE, []byte(value))</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		log.Println(err)</span><br><span class="line">		<span class="built_in">return</span> err</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> nil</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//读取数据尾部获取数据</span><br><span class="line">func (r GoRedis) DoRpop() (string, error) &#123;</span><br><span class="line">	val, err := Client.Rpop(DO_QUEUE)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">""</span>, err</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> string(val), err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//获取当前key存入的数量</span><br><span class="line">func (r GoRedis) DoLen() int &#123;</span><br><span class="line">	nums, err := Client.Llen(DO_QUEUE)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		<span class="built_in">return</span> 0</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> nums</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//存入集合中------------------------------------</span><br><span class="line">func (r GoRedis) ToSadd(value string) bool &#123;</span><br><span class="line">	res, _ := Client.Sadd(TO_QUEUE, []byte(value))</span><br><span class="line">	<span class="built_in">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//获取当前value是否需要存</span><br><span class="line">func (r GoRedis) ToIsset(value string) bool &#123;</span><br><span class="line">	res, _ := Client.Sismember(TO_QUEUE, []byte(value))</span><br><span class="line">	<span class="built_in">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://itwangmingfei.github.io/2020/05/15/Gocolly%E7%88%AC%E8%99%AB/" title="Gocolly爬虫" target="_blank" rel="external">https://itwangmingfei.github.io/2020/05/15/Gocolly%E7%88%AC%E8%99%AB/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/itwangmingfei" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/itwangmingfei" target="_blank"><span class="text-dark">Wang Mingfei</span><small class="ml-1x">Do it if you want</small></a></h3>
+        <div>Everything is empty</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2020/05/14/Jwt-go/" title="Jwt-go创建Token验证Token"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.jpg" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/itwangmingfei" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2020 SeeFly
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'TV5emqbCC3b87sKXhYRWhWBY-gzGzoHsz',
+    appKey: 'YjPHcCPHM3NKBr590LmmOu1q',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
