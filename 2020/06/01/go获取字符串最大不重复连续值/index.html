@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>go基本三大类型 | SeeFly的个人博客</title>
-  <meta name="description" content="go中值类型、引用类型、指针类型go语言中的值类型：123int、float、bool、array、sturct等　　值传递是指在调用函数时将实际参数复制一份传递到函数中，这样在函数中如果对参数进行修改，将不会影响到实际参数　　声明一个值类型变量时，编译器会在栈中分配一个空间，空间里存储的就是该变量的值 go语言中的引用类型：1234slice，map，channel，interface，func">
+  <title>go-获取字符串最大不重复连续值 | SeeFly的个人博客</title>
+  <meta name="description" content="go获取字符串最大不重复连续值rune 类型使用1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556package mainimport (	&quot;fmt&quot;)type list struct &amp;#123;	i,start int&amp;#125;&#x2F;&#x2F;获取不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go基本三大类型">
-<meta property="og:url" content="https://itwangmingfei.github.io/2020/05/13/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:title" content="go-获取字符串最大不重复连续值">
+<meta property="og:url" content="https://itwangmingfei.github.io/2020/06/01/go%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%80%E5%A4%A7%E4%B8%8D%E9%87%8D%E5%A4%8D%E8%BF%9E%E7%BB%AD%E5%80%BC/index.html">
 <meta property="og:site_name" content="SeeFly的博客">
-<meta property="og:description" content="go中值类型、引用类型、指针类型go语言中的值类型：123int、float、bool、array、sturct等　　值传递是指在调用函数时将实际参数复制一份传递到函数中，这样在函数中如果对参数进行修改，将不会影响到实际参数　　声明一个值类型变量时，编译器会在栈中分配一个空间，空间里存储的就是该变量的值 go语言中的引用类型：1234slice，map，channel，interface，func">
+<meta property="og:description" content="go获取字符串最大不重复连续值rune 类型使用1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556package mainimport (	&quot;fmt&quot;)type list struct &amp;#123;	i,start int&amp;#125;&#x2F;&#x2F;获取不">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-05-13T13:03:00.000Z">
-<meta property="article:modified_time" content="2020-05-16T13:18:40.481Z">
+<meta property="article:published_time" content="2020-06-01T09:19:00.000Z">
+<meta property="article:modified_time" content="2020-06-01T09:34:05.276Z">
 <meta property="article:author" content="SeeFly">
-<meta property="article:tag" content="go基本类型">
+<meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://itwangmingfei.github.io/2020/05/13/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/index.html">
+  <link rel="canonical" href="https://itwangmingfei.github.io/2020/06/01/go%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%80%E5%A4%A7%E4%B8%8D%E9%87%8D%E5%A4%8D%E8%BF%9E%E7%BB%AD%E5%80%BC/index.html">
   
     <link rel="alternate" href="/atom.xml" title="SeeFly的博客" type="application/atom+xml">
   
@@ -340,14 +340,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-go基本类型" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-go获取字符串最大不重复连续值" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      go基本三大类型
+      go-获取字符串最大不重复连续值
     </h1>
   
 
@@ -355,34 +355,32 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/05/13/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" class="article-date">
-	  <time datetime="2020-05-13T13:03:00.000Z" itemprop="datePublished">2020-05-13</time>
+	<a href="/2020/06/01/go%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%80%E5%A4%A7%E4%B8%8D%E9%87%8D%E5%A4%8D%E8%BF%9E%E7%BB%AD%E5%80%BC/" class="article-date">
+	  <time datetime="2020-06-01T09:19:00.000Z" itemprop="datePublished">2020-06-01</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/go/">go</a>
+    <a class="article-category-link" href="/categories/go%E5%AD%97%E7%AC%A6%E4%B8%B2/">go字符串</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" rel="tag">go基本类型</a>
+	<a class="article-tag-link" href="/tags/go/" rel="tag">go</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/05/13/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/01/go%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%80%E5%A4%A7%E4%B8%8D%E9%87%8D%E5%A4%8D%E8%BF%9E%E7%BB%AD%E5%80%BC/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h4 id="go中值类型、引用类型、指针类型"><a href="#go中值类型、引用类型、指针类型" class="headerlink" title="go中值类型、引用类型、指针类型"></a>go中值类型、引用类型、指针类型</h4><h5 id="go语言中的值类型："><a href="#go语言中的值类型：" class="headerlink" title="go语言中的值类型："></a>go语言中的值类型：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int、float、bool、array、sturct等</span><br><span class="line">　　值传递是指在调用函数时将实际参数复制一份传递到函数中，这样在函数中如果对参数进行修改，将不会影响到实际参数</span><br><span class="line">　　声明一个值类型变量时，编译器会在栈中分配一个空间，空间里存储的就是该变量的值</span><br></pre></td></tr></table></figure>
-<h5 id="go语言中的引用类型："><a href="#go语言中的引用类型：" class="headerlink" title="go语言中的引用类型："></a>go语言中的引用类型：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">slice，map，channel，interface，func，string等</span><br><span class="line">　声明一个引用类型的变量，编译器会把实例的内存分配在堆上</span><br><span class="line">string和其他语言一样，是引用类型，string的底层实现struct String &#123; byte* str; intgo len; &#125;; 但是因为string不允许修改，每次操作string只能生成新的对象，所以在看起来使用时像值类型。</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
-<h5 id="go语言中的指针类型："><a href="#go语言中的指针类型：" class="headerlink" title="go语言中的指针类型："></a>go语言中的指针类型：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一个指针变量指向了一个值的内存地址</span><br><span class="line"> 　  当一个指针被定义后没有分配到任何变量时，它的值为 nil。nil 指针也称为空指针</span><br><span class="line">　　一个指针变量通常缩写为 ptr</span><br><span class="line">　　其实引用类型可以看作对指针的封装</span><br></pre></td></tr></table></figure>
+        <h4 id="go获取字符串最大不重复连续值"><a href="#go获取字符串最大不重复连续值" class="headerlink" title="go获取字符串最大不重复连续值"></a>go获取字符串最大不重复连续值</h4><h5 id="rune-类型使用"><a href="#rune-类型使用" class="headerlink" title="rune 类型使用"></a>rune 类型使用</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> list struct &#123;</span><br><span class="line">	i,start int</span><br><span class="line">&#125;</span><br><span class="line">//获取不重复的数据和内容</span><br><span class="line">func repeatSubstr(s string) (int,[]list) &#123;</span><br><span class="line">	//创建一个map将字符串作为key 索引作为值</span><br><span class="line">	setmap := make(map[rune]int)</span><br><span class="line">    //定义开始的位置</span><br><span class="line">	start := 0</span><br><span class="line">    //记录最大长度</span><br><span class="line">	length := 0</span><br><span class="line">    //记录i，start 用户获取字符串</span><br><span class="line">	var newlist list</span><br><span class="line">	var lists []list</span><br><span class="line">    //遍历执行操作</span><br><span class="line">	<span class="keyword">for</span> i, value := range []rune(s) &#123;</span><br><span class="line">		//判断map中是否已经存在这个字符</span><br><span class="line">		lastk, ok := setmap[value]</span><br><span class="line">        //start位置定义。如果存在定义它下一个值作为一个新的start位置</span><br><span class="line">		<span class="keyword">if</span> ok &amp;&amp; lastk &gt;= start &#123;</span><br><span class="line">			start = lastk + 1</span><br><span class="line">		&#125;</span><br><span class="line">		//length长度计算</span><br><span class="line">		<span class="keyword">if</span> i-start+1 &gt; length &#123;</span><br><span class="line">			length = i - start + 1</span><br><span class="line">		&#125;</span><br><span class="line">		//存入setmap</span><br><span class="line">		setmap[value] = i</span><br><span class="line">        //记录</span><br><span class="line">		newlist.i = i</span><br><span class="line">		newlist.start = start</span><br><span class="line">		lists= append(lists,newlist)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> length,lists</span><br><span class="line">&#125;</span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	s := <span class="string">"我爱我你我他"</span></span><br><span class="line">	length ,list := (repeatSubstr(s))</span><br><span class="line">	fmt.Println(<span class="string">"获取长度"</span>,length)</span><br><span class="line">	bytes := []rune(s)</span><br><span class="line">	<span class="keyword">for</span> _,row := range list &#123;</span><br><span class="line">    	//将满足条件的字符串拿去出来	</span><br><span class="line">		<span class="keyword">if</span> row.i-row.start+1 == length&#123;</span><br><span class="line">			<span class="keyword">for</span> i := row.start;i&lt;= row.i ;i++  &#123;</span><br><span class="line">				fmt.Print(string(bytes[i]))</span><br><span class="line">			&#125;</span><br><span class="line">			fmt.Println()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <div class="article-footer">
@@ -391,7 +389,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://itwangmingfei.github.io/2020/05/13/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" title="go基本三大类型" target="_blank" rel="external">https://itwangmingfei.github.io/2020/05/13/go%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/</a>
+      <a href="https://itwangmingfei.github.io/2020/06/01/go%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%80%E5%A4%A7%E4%B8%8D%E9%87%8D%E5%A4%8D%E8%BF%9E%E7%BB%AD%E5%80%BC/" title="go-获取字符串最大不重复连续值" target="_blank" rel="external">https://itwangmingfei.github.io/2020/06/01/go%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%80%E5%A4%A7%E4%B8%8D%E9%87%8D%E5%A4%8D%E8%BF%9E%E7%BB%AD%E5%80%BC/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -437,13 +435,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2020/05/14/Gin-validate/" title="Gin-validate"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2020/05/13/%E8%B7%A8%E5%9F%9F-for-go/" title="跨域 for go"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/05/26/go-maze/" title="go-迷宫"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
